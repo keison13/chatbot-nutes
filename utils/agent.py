@@ -1,8 +1,4 @@
-import os
-from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_openai_functions_agent
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.messages import SystemMessage
 from langchain.memory import ConversationBufferWindowMemory
 from utils.historico import carregar_historico
 from dotenv import load_dotenv

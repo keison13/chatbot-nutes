@@ -1,50 +1,50 @@
 import pandas as pd
-from tkinter import filedialog
-from tkinter import Tk
-from docx import Document  # Biblioteca para manipular arquivos .docx
-from PyPDF2 import PdfReader  # Biblioteca para manipular arquivos PDF
+from docx import Document
+from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 
 load_dotenv()
 
-# Função para abrir o explorador e selecionar arquivos selecionados
+# Função segura que só usa tkinter se estiver disponível
 def abrir_explorador_documentos():
-    root = Tk()
-    root.withdraw()  # Oculta a janela principal do Tkinter
-    filepath = filedialog.askopenfilename(
-        title="Selecione um arquivo",
-        filetypes=[
-            ("Documentos Word", "*.docx"),
-            ("Documentos de Texto", "*.txt"),
-            ("PDF", "*.pdf"),
-            ("Planilhas Excel", "*.xlsx"),
-            ("Arquivos CSV", "*.csv"),
-        ]
-    )
-    return filepath
+    try:
+        from tkinter import filedialog, Tk
+        root = Tk()
+        root.withdraw()
+        filepath = filedialog.askopenfilename(
+            title="Selecione um arquivo",
+            filetypes=[
+                ("Documentos Word", "*.docx"),
+                ("Documentos de Texto", "*.txt"),
+                ("PDF", "*.pdf"),
+                ("Planilhas Excel", "*.xlsx"),
+                ("Arquivos CSV", "*.csv"),
+            ]
+        )
+        return filepath
+    except ImportError:
+        print("⚠️ tkinter não está disponível neste ambiente.")
+        return None
 
-# Função para ler o conteúdo de arquivos selecionados
 def ler_documento(filepath):
+    if filepath is None:
+        return "Nenhum arquivo foi selecionado."
+
     if filepath.endswith(".docx"):
-        # Para arquivos .docx
         doc = Document(filepath)
-        texto = "\n".join([paragrafo.text for paragrafo in doc.paragraphs])
+        texto = "\n".join([p.text for p in doc.paragraphs])
     elif filepath.endswith(".txt"):
-        # Para arquivos .txt
         with open(filepath, "r", encoding="utf-8") as file:
             texto = file.read()
     elif filepath.endswith(".pdf"):
-        # Para arquivos .pdf
         reader = PdfReader(filepath)
-        texto = "\n".join([page.extract_text() for page in reader.pages])
+        texto = "\n".join([page.extract_text() for page in reader.pages if page.extract_text()])
     elif filepath.endswith(".xlsx"):
-        # Para arquivos .xlsx
         df = pd.read_excel(filepath, engine="openpyxl")
-        texto = df.to_string()  # Converte o DataFrame em string legível
+        texto = df.to_string()
     elif filepath.endswith(".csv"):
-        # Para arquivos .csv
         df = pd.read_csv(filepath)
-        texto = df.to_string()  # Converte o DataFrame em string legível
+        texto = df.to_string()
     else:
         texto = "Formato de arquivo não suportado."
     return texto

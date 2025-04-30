@@ -3,8 +3,6 @@ from typing import Optional
 import math
 import requests
 from scipy.stats import f_oneway, shapiro  # teste
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
 from utils.autenticacao_nutes import token
 from dotenv import load_dotenv
 
@@ -272,10 +270,3 @@ def realizar_teste_anova_duracao():
         f"Duração de cada grupo: Sport = {sport_duracao}, Walk = {walk_duracao}, Outdoor Bike = {bike_duracao}": None
     }
 
-# Função para abrir o explorador de arquivos
-def abrir_explorador_de_arquivos():
-    root = Tk()
-    root.withdraw()  # Oculta a janela principal do Tkinter
-    root.wm_attributes('-topmost', 1)  # Faz com que a janela fique no topo
-    filepath = askopenfilename(title="Selecione um arquivo", filetypes=[("Documentos", "*.docx")])
-    return filepath

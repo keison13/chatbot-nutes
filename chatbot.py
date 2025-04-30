@@ -1,7 +1,6 @@
 from utils.agent import create_agent_with_memory
 from tools.tools import tools
 from langchain_openai import ChatOpenAI
-import os
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import SystemMessage
 from dotenv import load_dotenv
