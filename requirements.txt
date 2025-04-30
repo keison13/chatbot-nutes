@@ -3,11 +3,10 @@ python-dotenv
 openai
 langchain
 PyPDF2
-docx2
+python-docx
 tqdm
 requests
 pandas
 scikit-learn
 numpy
 scipy
-python-dotenv
