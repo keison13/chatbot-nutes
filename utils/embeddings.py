@@ -3,17 +3,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 import openai
 import pandas as pd
 import numpy as np
-import os
 from dotenv import load_dotenv
 
-# load_dotenv()
-
-openai_api_key = os.getenv("OPENAI_API_KEY")
-
-if not openai_api_key:
-    raise ValueError("A chave da OpenAI não foi encontrada nas variáveis de ambiente ou nas Secrets do Streamlit.")
-
-openai.api_key = openai_api_key  # Configura a chave para o openai
+load_dotenv()
 
 # DataFrame com perguntas relevantes/irrelevantes
 dados = {

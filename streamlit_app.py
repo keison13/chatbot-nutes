@@ -6,15 +6,9 @@ from tools.tools import tools
 from utils.embeddings import verificar_relevancia
 from utils.arquivos import ler_documento
 from chatbot import prompt, model
-import os
 from dotenv import load_dotenv
 
-# load_dotenv()
-
-openai_api_key = os.getenv("OPENAI_API_KEY")
-
-if not openai_api_key:
-    raise ValueError("A chave da OpenAI não foi encontrada nas variáveis de ambiente ou nas Secrets do Streamlit.")
+load_dotenv()
 
 # Configura a página
 st.set_page_config(page_title="Chat Sênior Móvel", layout="centered")
