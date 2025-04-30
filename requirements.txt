@@ -2,6 +2,7 @@ streamlit
 python-dotenv
 openai
 langchain
+langchain-openai
 PyPDF2
 python-docx
 tqdm
