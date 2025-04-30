@@ -1,6 +1,6 @@
 # ChatBot NUTES - Plataforma Senior
 
-Este projeto é um chatbot inteligente desenvolvido com [Streamlit](https://streamlit.io/) e [LangChain](https://www.langchain.com/) que responde perguntas sobre a **plataforma Senior**, com suporte a arquivos de texto (PDF, DOCX, TXT). O chat faz requisições as APIs da Senior para responder perguntas específicas.
+Este projeto é um chatbot inteligente(voltado para a aréa/dados de Atividades Físicas) desenvolvido com [Streamlit](https://streamlit.io/) e [LangChain](https://www.langchain.com/) que responde perguntas sobre a **plataforma Senior**, com suporte a arquivos de texto (PDF, DOCX, TXT). O chat faz requisições as APIs da Senior para responder perguntas específicas.
 
 ## Funcionalidades
 
@@ -10,6 +10,7 @@ Este projeto é um chatbot inteligente desenvolvido com [Streamlit](https://stre
 - Integração com a API da Senior
 - Autenticação automática com a API do NUTES
 - Detecção de perguntas irrelevantes
+- Calculos estatísticos
 
 ---
 
