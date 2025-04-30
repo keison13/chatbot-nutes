@@ -7,15 +7,14 @@ import os
 import openai
 from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 # Verifique se a chave foi carregada corretamente
-api_key = os.getenv("OPENAI_API_KEY")
-if not api_key:
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+if not openai_api_key:
     raise ValueError("A chave da OpenAI não foi encontrada no arquivo .env ou nas Secrets do Streamlit.")
 
-# Configura a chave da API no OpenAI
-openai.api_key = api_key
 
 # Agente
 
