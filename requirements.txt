@@ -3,6 +3,11 @@ python-dotenv
 openai
 langchain
 PyPDF2
-docx2txt
+docx2
 tqdm
 requests
+pandas
+scikit-learn
+numpy
+scipy
+python-dotenv
